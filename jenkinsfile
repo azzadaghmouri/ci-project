@@ -1,0 +1,37 @@
+pipeline {
+    agent {
+        label "master"
+    }
+   
+    stages {
+        stage("clone code") {
+            steps {
+                script {
+                    // Let's clone the source
+                    git 'https://github.com/oussama-mechlaoui/ci-project';
+                }
+            }
+        }
+        stage("mvn build") {
+            steps {
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
+            }
+        }
+        stage("mvn clean install aa ") {
+            steps {
+                script {
+                    sh "mvn clean"
+                }
+            }
+        }
+         stage("mvn test deploy ") {
+            steps {
+                script {
+                    sh "mvn clean deploy -Dmaven.test.skip=true"
+                }
+            }
+        }
+}
+}
