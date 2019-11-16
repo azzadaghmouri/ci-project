@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-        stage("mvn clean install aa ") {
+        stage("mvn clean install aabb ") {
             steps {
                 script {
                     sh "mvn clean"
